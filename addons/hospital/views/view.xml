@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="estilo.css"?>
+<odoo>
+    <!-- Data records go here -->
+    <record id='reservation_date_action' model='ir.actions.act_window'>
+        <field name="name">Reservas de Citas</field>
+        <field name="res_model">date.reservation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Reservacion de citas" id="reservation_date_base_menu"/>
+    <menuitem name="Reservar cita" id="reservation_date_menu" parent="reservation_date_base_menu"
+              action="reservation_date_action"/>
+    <menuitem name="Especialistas" id="reservation_specialist_menu" parent="reservation_date_base_menu"
+              action="reservation_date_action"/>
+    <menuitem name="Especialidad" id="reservation_specialty_menu" parent="reservation_date_base_menu"
+              action="reservation_date_action"/>
+
+
+    <record id="reservation_date_view_form" model="ir.ui.view">
+        <field name="name">Formulario de reservacion de citas</field>
+        <field name="model">date.reservation</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+
+                    <group>
+                        <field name="specialty" widget="many2one_tags"/>
+                        <field name="specialist"/>
+                        <field name="dni" widget="many2one_tags"/>
+                        <field name="address"/>
+                        <field name="phone"/>
+                    </group>
+                    <group>
+                        <field name="datetime"/>
+                        <field name="today"/>
+                        <field name="city"/>
+                        <field name="attention_mode"/>
+                        <!--    <field name="author_ids" widget="many2many_tags"/>  -->
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="reservation_date_view_tree" model="ir.ui.view">
+        <field name="name">Lista de reservacion de citas</field>
+        <field name="model">date.reservation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="specialty"/>
+                <field name="specialist"/>
+                <field name="dni"/>
+                <field name="address"/>
+                <field name="phone"/>
+                <field name="datetime"/>
+                <field name="today"/>
+                <field name="city"/>
+                <field name="attention_mode"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="reservation_date_view_search" model="ir.ui.view">
+        <field name="name">Reservation Date Search</field>
+        <field name="model">date.reservation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="dni"/>
+                <field name="today"/>
+                <filter string="No Cita"
+                        name="without_date"
+                        domain="[('dni','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+
+
+
+
+</odoo>
