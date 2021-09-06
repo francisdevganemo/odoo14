@@ -19,6 +19,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'security/groups.xml',
+        'security/ir.model.access.csv',
         'views/library_book.xml',
     ],
     # only loaded in demonstration mode

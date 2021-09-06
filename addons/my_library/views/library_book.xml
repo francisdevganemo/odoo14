@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Data records go here
     <record id='library_book_action' model='ir.actions.act_window'>
         <field name="name">Library Books</field>
         <field name="res_model">library.book</field>
         <field name="view_mode">tree,form</field>
     </record>
-    -->
-    <!-- Menu item
+
     <menuitem name="My Library" id="library_base_menu"/>
-    <menuitem name="Books" id="library_book_menu" parent="library_base_menu" action="library_book_action"/>
--->
-    <!-- Custom form
+    <menuitem name="Books" id="library_book_menu"
+              parent="library_base_menu" action="library_book_action"/>
+
     <record id="library_book_view_form" model="ir.ui.view">
         <field name="name">Library Book Form</field>
         <field name="model">library.book</field>
@@ -25,13 +23,13 @@
                     </group>
                     <group>
                         <field name="date_release"/>
+                        <field name="short_name"/>
                     </group>
                 </group>
             </form>
         </field>
     </record>
-    -->
-    <!-- Tree list
+
     <record id="library_book_view_tree" model="ir.ui.view">
         <field name="name">Library Book List</field>
         <field name="model">library.book</field>
@@ -42,8 +40,7 @@
             </tree>
         </field>
     </record>
-    -->
-    <!-- search
+
     <record id="library_book_view_search" model="ir.ui.view">
         <field name="name">Library Book Search</field>
         <field name="model">library.book</field>
@@ -57,5 +54,6 @@
             </search>
         </field>
     </record>
-    -->
+
+
 </odoo>
