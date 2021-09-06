@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="estilo.css"?>
 <odoo>
-    <!-- Data records go here -->
+    <!-- Begin View Mode -->
+    <!-- View reservation date -->
     <record id='reservation_date_action' model='ir.actions.act_window'>
         <field name="name">Reservas de Citas</field>
         <field name="res_model">date.reservation</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <!-- view specialist
+    <record id='specialist_action' model='ir.actions.act_window'>
+        <field name="name">Especialista</field>
+        <field name="res_model">date.reservation.specialist</field>
+        <field name="view_mode">tree,form</field>
+    </record> -->
+    <!-- view specialty -->
+    <record id='specialty_action' model='ir.actions.act_window'>
+        <field name="name">Especialidad</field>
+        <field name="res_model">date.reservation.specialty</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- End View Mode -->
 
+    <!-- Begin Menu item -->
     <menuitem name="Reservacion de citas" id="reservation_date_base_menu"/>
     <menuitem name="Reservar cita" id="reservation_date_menu" parent="reservation_date_base_menu"
               action="reservation_date_action"/>
     <menuitem name="Especialistas" id="reservation_specialist_menu" parent="reservation_date_base_menu"
               action="reservation_date_action"/>
     <menuitem name="Especialidad" id="reservation_specialty_menu" parent="reservation_date_base_menu"
-              action="reservation_date_action"/>
+              action="specialty_action"/>
+    <!-- End Menu item -->
 
+    <!-- Begin Reservation date-->
 
+    <!-- Begin Reservation -->
+
+    <!-- Begin Form Reservation -->
     <record id="reservation_date_view_form" model="ir.ui.view">
         <field name="name">Formulario de reservacion de citas</field>
         <field name="model">date.reservation</field>
         <field name="arch" type="xml">
             <form>
                 <group>
-
                     <group>
                         <field name="specialty" widget="many2one_tags"/>
                         <field name="specialist"/>
@@ -42,7 +61,9 @@
             </form>
         </field>
     </record>
+    <!-- End Form Reservation -->
 
+    <!-- Begin Tree Reservation -->
     <record id="reservation_date_view_tree" model="ir.ui.view">
         <field name="name">Lista de reservacion de citas</field>
         <field name="model">date.reservation</field>
@@ -60,7 +81,9 @@
             </tree>
         </field>
     </record>
+    <!-- End Tree Reservation -->
 
+    <!-- Begin Search Reservation -->
     <record id="reservation_date_view_search" model="ir.ui.view">
         <field name="name">Reservation Date Search</field>
         <field name="model">date.reservation</field>
@@ -74,6 +97,40 @@
             </search>
         </field>
     </record>
+    <!-- End Search Reservation -->
+    <!-- End Reservation date -->
+
+    <!-- Begin Specialty -->
+    <!-- Begin Form Reservation -->
+    <record id="specialty_view_form" model="ir.ui.view">
+        <field name="name">Formulario de especialidad</field>
+        <field name="model">date.reservation.specialty</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <!-- End Form Specialty -->
+
+    <!-- Begin Tree Specialty -->
+    <record id="specialty_view_tree" model="ir.ui.view">
+        <field name="name">Lista de especialidades</field>
+        <field name="model">date.reservation.specialty</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+    <!-- End Tree Specialty -->
+
+
+    <!-- End Specialty -->
 
 
 
