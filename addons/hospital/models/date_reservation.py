@@ -11,21 +11,35 @@ class DateReservation(models.Model):
     datetime = fields.Datetime('Fecha de la cita')
     today = fields.Datetime('Fecha de hoy', default=fields.Datetime.now, readonly=True)
     city = fields.Char('Ciudad')  # fields.Many2one('ubigeo','Ciudad')
-    attention_mode = fields.Selection(
-        [('virtual', 'Remota'),
-         ('onsite', 'Presencial')],
-        'Modo de atencion')
+    attention_mode = fields.Selection([('virtual', 'Remota'), ('onsite', 'Presencial')], 'Modo de atencion')
 
     @api.onchange('datetime')
     def _onchange_datetime(self):
         for record in self:
-            if record.datetime:
-                if record.datetime < record.today:
-                    record.datetime = record.today
+            if record.datetime < record.today:
+                record.datetime = record.today
+
 
 class DateReservationSpecialty(models.Model):
     _name = 'date.reservation.specialty'
     description = fields.Char('Especialidad')
+
+
+class Recipe(models.Model):
+    _name = "recipe"
+    patient = fields.Char("Paciente")
+    age = fields.Integer("Edad")
+    address = fields.Char("Direccion")
+    phone = fields.Char("Numero de telefono")
+    idmedicines = fields.Many2many("Medicines.medicines", "Medicinas")
+
+
+class Medicines(models.Model):
+    _name = 'medicines'
+    description = fields.Char("Medicinas")
+    currency_id = fields.Many2one('res.currency', string="Currency")
+    price = fields.Monetary(string="Precio")
+    provider = fields.Char("Proveedor")
 
 
 class DateReservationSpecialist(models.Model):
@@ -40,6 +54,7 @@ class DateReservationSpecialist(models.Model):
     district = fields.Char('Distrito')
     province = fields.Char('Provincia')
     department = fields.Char('Departamento')
+
 
     # @api.onchange('specialty')
     # def _onchange_specialty(self):
