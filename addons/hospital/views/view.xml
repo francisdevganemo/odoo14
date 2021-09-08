@@ -8,6 +8,18 @@
         <field name="res_model">date.reservation</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <!-- View Recipe -->
+    <record id='recipe_action' model='ir.actions.act_window'>
+        <field name="name">Receta</field>
+        <field name="res_model">recipe</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- View reservation Medicines -->
+    <record id='medicines_action' model='ir.actions.act_window'>
+        <field name="name">Medicinas</field>
+        <field name="res_model">medicines</field>
+        <field name="view_mode">tree,form</field>
+    </record>
     <!-- view specialist -->
     <record id='specialist_action' model='ir.actions.act_window'>
         <field name="name">Especialista</field>
@@ -30,6 +42,10 @@
               action="specialist_action"/>
     <menuitem name="Especialidad" id="reservation_specialty_menu" parent="reservation_date_base_menu"
               action="specialty_action"/>
+    <menuitem name="Recetas" id="recipe_menu" parent="reservation_date_base_menu"
+              action="recipe_action"/>
+    <menuitem name="Medicina" id="medicines_menu" parent="reservation_date_base_menu"
+              action="medicines_action"/>
     <!-- End Menu item -->
 
     <!-- Begin Reservation date-->
@@ -174,4 +190,89 @@
     </record>
     <!-- End Tree Specialist -->
     <!-- End Specialist -->
+
+<!-- Begin Recipe-->
+
+    <!-- Begin Recipe -->
+
+    <!-- Begin Form Recipe -->
+    <record id="recipe_view_form" model="ir.ui.view">
+        <field name="name">Receta</field>
+        <field name="model">recipe</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="patient"/>
+                        <field name="age"/>
+                        <field name="address"/>
+                        <field name="phone"/>
+                        <field name="idmedicines" widget="many2one_tags"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <!-- End Form Recipe -->
+
+    <!-- Begin Tree REcipe -->
+    <record id="recipe_view_tree" model="ir.ui.view">
+        <field name="name">Receta</field>
+        <field name="model">recipe</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="patient"/>
+                        <field name="age"/>
+                        <field name="address"/>
+                        <field name="phone"/>
+                        <field name="idmedicines" widget="many2one_tags"/>
+            </tree>
+        </field>
+    </record>
+    <!-- End Tree Recipe -->
+
+    <!-- End Reservation RECIPE -->
+
+<!-- Begin medicine-->
+
+    <!-- Begin medicine -->
+
+    <!-- Begin Form medicine -->
+    <record id="medicines_view_form" model="ir.ui.view">
+        <field name="name">Medicinas</field>
+        <field name="model">medicines</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="description"/>
+                        <field name="currency_id"/>
+                        <field name="price"/>
+                        <field name="provider"/>                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <!-- End Form medicine -->
+
+    <!-- Begin Tree medicines -->
+    <record id="medicines_view_tree" model="ir.ui.view">
+        <field name="name">Medicinas</field>
+        <field name="model">medicines</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="description"/>
+                        <field name="price"/>
+                        <field name="provider"/>
+                   </tree>
+        </field>
+    </record>
+    <!-- End Tree medicines -->
+
+    <!-- End Reservation medicines -->
+
+
+
+
+
 </odoo>

@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Categoria Hospital -->
     <record id="category_hospital" model="ir.module.category">
         <field name="name">Hospital</field>
         <field name="sequence">100</field>
     </record>
+
+    <!--        Grupos      -->
+
+    <!--        Doctor      -->
     <record id="group_doctors" model="res.groups">
         <field name="name">Doctores</field>
         <field name="category_id" ref="category_hospital"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
+    <!--        Enfermera       -->
+    <record id="group_nurse" model="res.groups">
+        <field name="name">Enfermera</field>
+        <field name="category_id" ref="category_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <!-- Recepcionista -->
+    <record id="group_reception" model="res.groups">
+        <field name="name">Recepcionista</field>
+        <field name="category_id" ref="category_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <!-- Almacen -->
+    <record id="group_grocery" model="res.groups">
+        <field name="name">Despacho</field>
+        <field name="category_id" ref="category_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <!-- Administrador -->
     <record id="group_hospital_management" model="res.groups">
         <field name="name">Administrador</field>
         <field name="category_id" ref="category_hospital"/>
