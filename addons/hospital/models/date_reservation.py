@@ -8,7 +8,7 @@ class DateReservation(models.Model):
     dni = fields.Char("DNI", required=True)
     address = fields.Char('Direccion')
     phone = fields.Char('Numero de celular')
-    datetime = fields.Datetime('Fecha de la cita')
+    datetime = fields.Datetime('Fecha de la cita', default=fields.Datetime.now)
     today = fields.Datetime('Fecha de hoy', default=fields.Datetime.now, readonly=True)
     city = fields.Char('Ciudad')  # fields.Many2one('ubigeo','Ciudad')
     attention_mode = fields.Selection([('virtual', 'Remota'), ('onsite', 'Presencial')], 'Modo de atencion')

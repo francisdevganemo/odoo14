@@ -248,7 +248,8 @@
                         <field name="description"/>
                         <field name="currency_id"/>
                         <field name="price"/>
-                        <field name="provider"/>                    </group>
+                        <field name="provider"/>
+                    </group>
                 </group>
             </form>
         </field>
