@@ -2,8 +2,6 @@
 <odoo>
     <record id="group_librarian" model="res.groups">
         <field name="name">Librarians</field>
-        <!-- eval hereda la lista de los usuarios admin -->
-        <!--  -->
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 </odoo>
