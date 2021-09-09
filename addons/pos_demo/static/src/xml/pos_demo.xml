@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Owl Framework -->
+<!-- Preserve sirve para no notar los espacios entre etiquetas -->
+<templates id="template" xml:space="preserve">
+    <!-- El nombre del boton que hicimos en el js y ademas dejar el owl que pertenece al owl framawork -->
+    <t t-name="PosDiscountButton" owl="3">
+        <!-- crea un span con la clase control-button lo cual lleva el estilo del boton y establece
+            el evento onclick
+         -->
+        <span class="control-button " t-on-click="onClick">
+            <!-- aqui lo que hace es simplemente crear dos etiquetas, uno con un icon de fontAwesome
+            y otro con el nombre que ira dentro del boton a mostrar al usuario
+             -->
+            <i class="fa fa-gift"></i>
+            <span>5% Discount</span>
+        </span>
+    </t>
+</templates>
