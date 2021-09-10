@@ -19,7 +19,6 @@ class DateReservation(models.Model):
             if record.datetime < record.today:
                 record.datetime = record.today
 
-
 class DateReservationSpecialty(models.Model):
     _name = 'date.reservation.specialty'
     description = fields.Char('Especialidad')
